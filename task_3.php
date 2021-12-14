@@ -1,3 +1,27 @@
+<?php
+    $nav = [
+        [
+            'title' => 'Главная',
+            'href' => 'example.com/',
+            'link' => true
+        ],
+
+        [
+            'title' => 'О нас',
+            'href' => 'example.com/',
+            'link' => true
+        ],
+
+        [
+            'title' => 'Контакты',
+            'href' => 'example.com/',
+            'link' => false
+        ]
+     ];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +57,14 @@
                     <div class="panel-container show">
                         <div class="panel-content">
                             <ol class="breadcrumb page-breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item"><a href="#">PHP</a></li>
-                                <li class="breadcrumb-item active">Функции</li>
+                                <?php foreach($nav as $items):?>
+                                  <?php if($items['link'] == true) :?>
+                                <li class="breadcrumb-item"><a href="<?=$items['href']?>"><?=$items['title']?></a></li>
+                                <?php else :?>
+                                <li class="breadcrumb-item active"><?=$items['title']?></li>
+                                <?php endif?>
+
+                                <?php endforeach?>
                             </ol>
                         </div>
                     </div>
